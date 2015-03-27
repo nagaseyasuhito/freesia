@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resources PUBLIC
+    "-//GlassFish.org//DTD GlassFish Application Server 3.1 Resource Definitions//EN"
+    "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
+<resources>
+	<jdbc-resource pool-name="freesia" jndi-name="jdbc/freesia" />
+
+	<jdbc-connection-pool name="freesia" res-type="javax.sql.XADataSource" datasource-classname="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource">
+		<property name="url" value="jdbc:mysql://localhost/freesia" />
+		<property name="user" value="root" />
+		<property name="password" value="passwd" />
+	</jdbc-connection-pool>
+</resources>
