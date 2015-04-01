@@ -1,5 +1,7 @@
 package com.github.nagaseyasuhito.freesia.dao;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,10 +52,21 @@ public abstract class BaseDao<T, I> {
 		CriteriaQuery<R> criteriaQuery = criteriaBuilder.createQuery(resultClass);
 		Root<T> root = criteriaQuery.from(this.getEntityClass());
 
-		return this.entityManager.createQuery(query.execute(criteriaBuilder, criteriaQuery, root)).setHint("eclipselink.read-only", true);
+		try {
+			this.entityManager.unwrap(Connection.class).setReadOnly(true);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+		return this.entityManager.createQuery(query.execute(criteriaBuilder, criteriaQuery, root));
 	}
 
 	public Optional<T> findById(I id) {
+		try {
+			this.entityManager.unwrap(Connection.class).setReadOnly(true);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 		return Optional.ofNullable(this.entityManager.find(this.getEntityClass(), id));
 	}
 
