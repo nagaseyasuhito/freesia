@@ -1,0 +1,28 @@
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+.vert-text {
+	color: #eee;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.vert-text h1 {
+	font-size: 4.5em;
+	font-weight: 700;
+}
+
+.header {
+	display: table;
+	height: 100%;
+	width: 100%;
+	position: relative;
+	background: url(https://placekitten.com/g/320/320) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}

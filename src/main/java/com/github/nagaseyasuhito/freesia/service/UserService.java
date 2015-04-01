@@ -18,7 +18,7 @@ public class UserService {
 	@Inject
 	private UserDao userDao;
 
-	public User create(@NotNull String mailAddress, Optional<String> invitationCode) {
+	public User register(@NotNull String mailAddress, Optional<String> invitationCode) {
 		User user = new User();
 		user.setMailAddress(mailAddress);
 		user.setInvitationCode(InvitationCodes.generate());

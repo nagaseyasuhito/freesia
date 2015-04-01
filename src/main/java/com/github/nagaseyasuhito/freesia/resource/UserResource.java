@@ -18,8 +18,8 @@ public class UserResource {
 	private UserService userService;
 
 	@POST
-	public User create(@QueryParam("mailAddress") String mailAddress, @QueryParam("invitationCode") String invitationCode) {
-		return this.userService.create(mailAddress, Optional.ofNullable(invitationCode));
+	public User register(@QueryParam("mailAddress") String mailAddress, @QueryParam("invitationCode") String invitationCode) {
+		return this.userService.register(mailAddress, Optional.ofNullable(invitationCode));
 	}
 
 	@Path("{id}")
