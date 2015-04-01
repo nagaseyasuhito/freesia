@@ -50,7 +50,7 @@ public abstract class BaseDao<T, I> {
 		CriteriaQuery<R> criteriaQuery = criteriaBuilder.createQuery(resultClass);
 		Root<T> root = criteriaQuery.from(this.getEntityClass());
 
-		return this.entityManager.createQuery(query.execute(criteriaBuilder, criteriaQuery, root));
+		return this.entityManager.createQuery(query.execute(criteriaBuilder, criteriaQuery, root)).setHint("eclipselink.read-only", true);
 	}
 
 	public Optional<T> findById(I id) {
